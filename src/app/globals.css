@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* Surfaces — from paper white to slate ink */
+  /* Surfaces, from paper white to slate ink */
   --color-ink-50:  #ffffff;
   --color-ink-100: #fafbfa;
   --color-ink-200: #f4f6f4;
@@ -14,13 +14,13 @@
   --color-ink-900: #202623;
   --color-ink-950: #0e1310;
 
-  /* Text — kept named "fog" for continuity: fog-100 = primary text */
+  /* Text, kept named "fog" for continuity: fog-100 = primary text */
   --color-fog-100: #0e1310;
   --color-fog-200: #303733;
   --color-fog-300: #6b7570;
   --color-fog-400: #9aa39c;
 
-  /* Brand — Powerise green (only accent color used) */
+  /* Brand, Powerise green (only accent color used) */
   --color-brand-50:  #e6f4ec;
   --color-brand-100: #cfeadb;
   --color-brand-200: #a7d7bd;
@@ -56,6 +56,11 @@
   to { transform: translateX(0); }
 }
 
+@keyframes hero-copy-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* -------------------------------------------------------------------------- */
 /*  Base                                                                       */
 /* -------------------------------------------------------------------------- */
@@ -84,7 +89,7 @@ html, body {
   color: var(--color-fog-100);
 }
 
-/* Custom scrollbar — subtle */
+/* Custom scrollbar, subtle */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: var(--color-ink-100); }
 ::-webkit-scrollbar-thumb {

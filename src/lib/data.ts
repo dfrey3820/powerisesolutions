@@ -1,7 +1,12 @@
 export type NavItem = {
   label: string;
   href: string;
-  children?: { label: string; href: string; description?: string }[];
+  children?: {
+    label: string;
+    href: string;
+    description?: string;
+    children?: { label: string; href: string }[];
+  }[];
 };
 
 export const navigation: NavItem[] = [
@@ -12,34 +17,43 @@ export const navigation: NavItem[] = [
     href: "/services",
     children: [
       {
-        label: "Energy Monitoring",
-        href: "/services/energy-monitoring",
-        description: "IoT smart meters, energy audits, solar & battery"
-      },
-      {
-        label: "Generator Monitoring",
-        href: "/services/generator-monitoring",
-        description: "Fuel, engine health, run-hours & geolocation"
-      },
-      {
-        label: "Cold Chain",
+        label: "Cold Chain Solutions",
         href: "/services/cold-chain",
-        description: "Vaccines, pharma & food — end-to-end integrity"
+        description: "Truck cold monitoring & data loggers",
+        children: [
+          {
+            label: "Single-use USB Logger",
+            href: "/services/cold-chain/usb-data-logger"
+          },
+          {
+            label: "Single-use Real-time Logger",
+            href: "/services/cold-chain/single-use-realtime"
+          },
+          {
+            label: "Multi-use Real-time Logger",
+            href: "/services/cold-chain/multi-use-realtime"
+          }
+        ]
       },
       {
-        label: "Truck & Fleet Telematics",
-        href: "/services/truck-telematics",
-        description: "Fuel, axle load, driver behaviour, reefer trucks"
+        label: "Energy / Solar Solutions",
+        href: "/services/energy-monitoring",
+        description: "Energy audits & solar installations, batteries, inverters, panels"
       },
       {
-        label: "Water & Gas Metering",
+        label: "Utility Monitoring",
         href: "/services/water-gas-metering",
-        description: "Leak detection, billing accuracy & LEL safety"
+        description: "Generator, electricity, solar, backup batteries, water & gas"
       },
       {
-        label: "Smart Home & Locks",
+        label: "Smart Homes",
         href: "/services/smart-home",
-        description: "Smart locks, switches, lighting, CCTV & scenes"
+        description: "Locks, curtains, sockets, switches, gates, CCTV, door bells & lighting"
+      },
+      {
+        label: "Trucks & Car Tracking",
+        href: "/services/truck-telematics",
+        description: "GPS, driver behaviour, fuel, load carrying & temperature"
       }
     ]
   },
@@ -52,7 +66,7 @@ export const company = {
   short: "Powerise",
   tagline: "Intelligent IoT for a connected Africa.",
   intro:
-    "Powerise Solutions Limited is a cutting-edge IoT solutions provider specializing in smart technologies that enhance the efficiency, reliability, and sustainability of essential resources and infrastructure — from energy management and power backup to smart home automation and advanced supply-chain monitoring.",
+    "Powerise Solutions Limited is an IoT provider specializing in smart technologies that improve the efficiency, reliability and sustainability of essential resources and infrastructure. Its portfolio spans energy management, power backup, smart home automation and supply-chain monitoring.",
   address:
     "Jabavu House, Jabavu Lane, off Argwings Kodhek Road, Hurlingham, Nairobi, Kenya",
   email: "info@powerise.co.ke",
@@ -82,7 +96,7 @@ export const vision = {
   whyUs: [
     {
       title: "Comprehensive Solutions",
-      body: "A single portfolio for energy, water, gas, logistics and home automation — one accountable partner across the stack."
+      body: "A single portfolio for energy, water, gas, logistics and home automation, with one accountable partner across the stack."
     },
     {
       title: "Data-Driven Insights",
@@ -104,7 +118,7 @@ export const pillars = [
     slug: "energy-monitoring",
     icon: "gauge",
     title: "Energy Monitoring",
-    tagline: "See every kWh — live.",
+    tagline: "See every kWh in real time.",
     description:
       "IoT-enabled Energy Audit powered by smart meters. Continuous, granular insight into voltage, current, power factor and load patterns across buildings, circuits and equipment.",
     features: [
@@ -115,26 +129,12 @@ export const pillars = [
     ]
   },
   {
-    slug: "generator-monitoring",
-    icon: "zap",
-    title: "Generator Monitoring",
-    tagline: "End fuel loss. Extend genset life.",
-    description:
-      "Retrofit any diesel generator with real-time fuel, engine and location telemetry. Detect theft the moment it happens and schedule maintenance before failure.",
-    features: [
-      "Fuel level, top-ups & sudden-drain alerts",
-      "Engine speed, oil pressure, temperature",
-      "Run-hours, load & frequency logging",
-      "Geo-location tracking by genset & technician"
-    ]
-  },
-  {
     slug: "cold-chain",
     icon: "snowflake",
     title: "Cold Chain",
     tagline: "Every degree, logged and defensible.",
     description:
-      "Global real-time monitors for vaccines, pharma and perishable cargo. Temperature, humidity, light, shock and location — one platform, WHO-PQS aligned.",
+      "Global real-time monitors for vaccines, pharmaceuticals and perishable cargo. Track temperature, humidity, light, shock and location on one WHO-PQS-aligned platform.",
     features: [
       "±0.5 °C TI digital sensors, −30 °C to 70 °C",
       "Global LTE 4G/5G with 2G fallback",
@@ -148,12 +148,12 @@ export const pillars = [
     title: "Truck & Fleet Telematics",
     tagline: "Full visibility over 250+ parameters.",
     description:
-      "Comprehensive monitoring for trucks and reefer fleets: engine health, fuel, cargo weight, route and driver behaviour — with cold-chain telematics for perishable loads.",
+      "Monitor engine health, fuel, cargo weight, routes and driver behaviour across trucks, reefer fleets and diesel generators. Genset telemetry and cold-chain tracking support perishable loads.",
     features: [
       "Fuel theft prevention & consumption analytics",
       "Axle-load and cargo tampering detection",
       "Driver behaviour, speeding & route deviation",
-      "Reefer temperature & door-event logging"
+      "Generator fuel, engine health & run-hours"
     ]
   },
   {
@@ -162,7 +162,7 @@ export const pillars = [
     title: "Water & Gas Metering",
     tagline: "Bill accurately. Find leaks first.",
     description:
-      "Smart water and gas meters over LoRaWAN and 4G — accurate consumption data, leak and tamper detection, remote valve control and audit-ready reporting.",
+      "Smart water and gas meters over LoRaWAN and 4G provide accurate consumption data, leak and tamper detection, remote valve control and audit-ready reporting.",
     features: [
       "Ultrasonic flow with tamper alerts",
       "Non-revenue water reduction",
@@ -176,7 +176,7 @@ export const pillars = [
     title: "Smart Home & Locks",
     tagline: "A home that thinks with you.",
     description:
-      "Smart locks, lighting, switches, sockets and CCTV — unified in one app with mobile, PIN, RFID, fingerprint and mechanical-key access.",
+      "Control smart locks, lighting, switches, sockets and CCTV from one app. Access options include mobile, PIN, RFID, fingerprint and mechanical key.",
     features: [
       "Fingerprint, PIN, RFID, app & key unlock",
       "Wi-Fi smart switches, sockets and dimmers",
@@ -194,7 +194,7 @@ export const services = {
     {
       title: "IoT Smart Energy Meters",
       description:
-        "Connected meters capturing voltage, current, power factor, active and reactive power — automated billing, TOU tariffs and anomaly detection.",
+        "Connected meters capture voltage, current, power factor, and active and reactive power to support automated billing, TOU tariffs and anomaly detection.",
       icon: "gauge"
     },
     {
@@ -216,56 +216,30 @@ export const services = {
       icon: "building"
     }
   ],
-  "generator-monitoring": [
-    {
-      title: "Engine Health & Diagnostics",
-      description:
-        "Engine speed, oil pressure, coolant temperature, power output, runtime, voltage and frequency — logged continuously and analysed for predictive maintenance.",
-      icon: "activity"
-    },
-    {
-      title: "Fuel Monitoring & Theft Prevention",
-      description:
-        "Capacitive fuel-level sensors for stationary and mobile gensets. Alerts on sudden drains, top-ups and unauthorised siphoning.",
-      icon: "droplet"
-    },
-    {
-      title: "Genset Fleet & Geolocation",
-      description:
-        "Real-time geo-tracking of gensets and technicians, remote start/stop, and enterprise-view dashboards for large fleets.",
-      icon: "map-pin"
-    },
-    {
-      title: "Automated Alerts & Reports",
-      description:
-        "Configurable alarms for alarm codes, fuel loss and abnormal loads — delivered by SMS, email and app, with PDF and Excel reports.",
-      icon: "bell"
-    }
-  ],
   "cold-chain": [
     {
-      title: "Real-time Multi-use Loggers",
+      title: "Cloud Platform & Route Tracking",
       description:
-        "Rechargeable global loggers with 120-day run-time, ±0.5 °C accuracy, humidity, light, shock and LBS location tracking via Frigga cloud.",
-      icon: "thermometer"
-    },
-    {
-      title: "Single-use USB Loggers",
-      description:
-        "NIST-traceable disposable loggers for one-shot shipments — up to 14,400 readings, IP67, PDF + CSV reports over USB.",
-      icon: "usb"
-    },
-    {
-      title: "Cold Rooms, Coolers & Freezers",
-      description:
-        "Continuous 2–8 °C and sub-zero monitoring for life-science storage, retail cabinets and QSR cold rooms — with audit-ready reporting.",
-      icon: "refrigerator"
-    },
-    {
-      title: "Reefer Truck & Container Tracking",
-      description:
-        "Combine temperature, humidity, door-event, GPS and route telemetry to prove chain-of-custody from port to last mile.",
+        "The cloud platform visualises location, temperature, humidity, shock and route data across web, mobile app and tablet views.",
       icon: "truck"
+    },
+    {
+      title: "24/7 Alerts & Analysis",
+      description:
+        "Round-the-clock data control and analysis with real-time alerts via SMS, email and app the moment a shipment drifts out of range.",
+      icon: "bell"
+    },
+    {
+      title: "Audit-ready Reports",
+      description:
+        "Generate PDF cold-chain reports via USB 2.0, the cloud platform or mobile app. Reports include trip summaries, alarm statistics and record charts for compliance.",
+      icon: "clipboard"
+    },
+    {
+      title: "Calibration & Compliance",
+      description:
+        "Every logger includes a calibration report for its NIST-traceable TI digital sensor. Devices are certified to FCC, CE, RTCA/DO-160G, UN38.3, RoHS and WEEE standards.",
+      icon: "check"
     }
   ],
   "truck-telematics": [
@@ -290,8 +264,32 @@ export const services = {
     {
       title: "Cold-chain Telematics",
       description:
-        "Integrated reefer temperature, humidity, door and GPS telemetry — one screen for cargo integrity and vehicle status.",
+        "Integrated reefer temperature, humidity, door and GPS telemetry, one screen for cargo integrity and vehicle status.",
       icon: "snowflake"
+    },
+    {
+      title: "Generator Engine Health & Diagnostics",
+      description:
+        "Engine speed, oil pressure, coolant temperature, power output, runtime, voltage and frequency, logged continuously and analysed for predictive maintenance.",
+      icon: "zap"
+    },
+    {
+      title: "Genset Fuel Monitoring & Theft Prevention",
+      description:
+        "Capacitive fuel-level sensors for stationary and mobile gensets. Alerts on sudden drains, top-ups and unauthorised siphoning.",
+      icon: "droplet"
+    },
+    {
+      title: "Genset Fleet & Geolocation",
+      description:
+        "Real-time geo-tracking of gensets and technicians, remote start/stop, and enterprise-view dashboards for large fleets.",
+      icon: "map-pin"
+    },
+    {
+      title: "Automated Alerts & Reports",
+      description:
+        "Configurable alarms for alarm codes, fuel loss and abnormal loads, delivered by SMS, email and app, with PDF and Excel reports.",
+      icon: "bell"
     }
   ],
   "water-gas-metering": [
@@ -316,7 +314,7 @@ export const services = {
     {
       title: "Waste Management Sensors",
       description:
-        "Fill-level sensors for bins and skips — optimise collection routes and cut fuel and labour costs.",
+        "Fill-level sensors for bins and skips, optimise collection routes and cut fuel and labour costs.",
       icon: "trash"
     }
   ],
@@ -330,7 +328,7 @@ export const services = {
     {
       title: "Wi-Fi Switches, Sockets & Dimmers",
       description:
-        "Touch, physical and dimmer switches; smart power strips and wall sockets — Amazon Alexa and Google Home ready.",
+        "Touch, physical and dimmer switches; smart power strips and wall sockets, Amazon Alexa and Google Home ready.",
       icon: "toggle-right"
     },
     {
@@ -342,11 +340,195 @@ export const services = {
     {
       title: "CCTV, Climate & Voice",
       description:
-        "AI-assisted IP cameras with local NVR, smart thermostats and motorised blinds — one app, Alexa & Google Home voice control.",
+        "AI-assisted IP cameras with local NVR, smart thermostats and motorised blinds, one app, Alexa & Google Home voice control.",
       icon: "camera"
     }
   ]
 } as const;
+
+/**
+ * Product model line-ups per solution, keyed by pillar slug.
+ * Each model gets a section on the service detail page and its own
+ * sub-page at /services/<pillar>/<model slug>.
+ */
+export const productModels: Record<
+  string,
+  {
+    slug: string;
+    name: string;
+    tagline: string;
+    description: string;
+    points: string[];
+    highlights: { title: string; body: string }[];
+    specs: { label: string; value: string }[];
+    image: string;
+    imageAlt: string;
+  }[]
+> = {
+  "cold-chain": [
+    {
+      slug: "usb-data-logger",
+      name: "Single-use USB Logger",
+      tagline: "Offline · one-time use",
+      description:
+        "An economical choice for one-way shipments when you only need a report at the destination. Plug into any USB port to download PDF and CSV reports, with no connectivity or setup required.",
+      points: [
+        "Texas Instruments digital sensor with NIST-traceable calibration and a report included with every logger",
+        "Up to 100 days per trip, max 14,400 readings",
+        "−30 °C to 70 °C, shock detection, IP67",
+        "12-month shelf life on a 3.0 V lithium battery"
+      ],
+      highlights: [
+        {
+          title: "Dual-format reports",
+          body: "Every logger generates PDF and CSV reports over USB. Use the PDF for sign-off and the CSV with your QA systems."
+        },
+        {
+          title: "NIST-traceable calibration",
+          body: "A TI digital sensor and calibration report ship with every unit, providing traceable data for pharma and food audits."
+        },
+        {
+          title: "Shock detection",
+          body: "Records impact events alongside temperature so you can prove how goods were handled, not just how cold they were."
+        }
+      ],
+      specs: [
+        { label: "Usage type", value: "Single-use, up to 100 days per trip" },
+        { label: "Temperature sensor", value: "Texas Instruments digital sensor, NIST traceable" },
+        { label: "Temperature range", value: "−30 °C to 70 °C (−22 °F to 158 °F)" },
+        { label: "Memory capacity", value: "Up to 14,400 readings" },
+        { label: "Reports", value: "PDF and CSV via USB; no software required" },
+        { label: "Shock detection", value: "Yes; records impacts to help protect goods" },
+        { label: "Environmental rating", value: "IP67" },
+        { label: "Battery", value: "3.0 V lithium · 12-month battery life" },
+        { label: "Calibration", value: "Calibration report included with every logger" }
+      ],
+      image: "/products/cold-chain-usb-logger.jpg",
+      imageAlt: "Single-use offline USB temperature data logger"
+    },
+    {
+      slug: "single-use-realtime",
+      name: "Single-use Real-time Logger",
+      tagline: "B9Z · 2G · one-time use",
+      description:
+        "A global real-time monitor for critical one-way shipments. Temperature, location and route data stream to the cloud for live traceability, with a USB PDF backup on arrival and alerts when conditions drift.",
+      points: [
+        "Real-time alerts via SMS, email and app, 24/7",
+        "Cold-chain visibility with location, temperature and route data",
+        "Global embedded roaming SIM inside",
+        "60 days of monitoring per trip, 28,800 readings"
+      ],
+      highlights: [
+        {
+          title: "Live cloud traceability",
+          body: "Data streams to the cloud as it is recorded. Follow the shipment on a route map and respond to issues before product is lost."
+        },
+        {
+          title: "Double-backup PDF reports",
+          body: "Get a local PDF through the USB port and another from the cloud platform. The logger keeps the familiar USB workflow while adding real-time monitoring."
+        },
+        {
+          title: "Flight mode on arrival",
+          body: "Entering a preset location automatically switches the device to flight mode and notifies your team by email or app push."
+        }
+      ],
+      specs: [
+        { label: "Model", value: "B9Z (2G-60)" },
+        { label: "Usage type", value: "Single-use, max 60 days" },
+        { label: "Monitored parameters", value: "Temperature, location, track routes" },
+        { label: "Temperature sensor", value: "Internal Texas Instruments digital sensor" },
+        { label: "Temperature range", value: "−30 °C to 70 °C · ±0.5 °C (−20 °C to +40 °C) · 0.1 °C resolution" },
+        { label: "Memory capacity", value: "Up to 28,800 readings" },
+        { label: "Location", value: "LBS base-station positioning" },
+        { label: "Cellular", value: "2G network · embedded global roaming SIM" },
+        { label: "Use time", value: "60 days at 60-min reporting interval" },
+        { label: "Intervals", value: "10-min logging · 10/20/30/60-min reporting (platform settable)" },
+        { label: "Reports", value: "PDF via USB 2.0, cloud platform or mobile app" },
+        { label: "Environmental rating", value: "IP64" },
+        { label: "Dimensions / weight", value: "103 × 61.3 × 23 mm / 120 g" },
+        { label: "Certifications", value: "FCC, CE, RTCA/DO-160G, UN38.3, RoHS, WEEE" },
+        { label: "Shelf time / storage", value: "12 months · −10 °C to +55 °C" }
+      ],
+      image: "/products/cold-chain-b9z.jpg",
+      imageAlt: "B9Z single-use real-time temperature logger"
+    },
+    {
+      slug: "multi-use-realtime",
+      name: "Multi-use Real-time Logger",
+      tagline: "T7 / T71 · 4G/5G · reusable + rechargeable",
+      description:
+        "The workhorse for recurring lanes: a rechargeable real-time monitor that delivers full cold chain visibility trip after trip, with an on-device display for spot checks. Available with an external probe (T71) for deep-frozen loads down to −40 °C.",
+      points: [
+        "120 days per charge, up to 50,000 readings",
+        "±0.5 °C accuracy from −20 °C to +40 °C",
+        "Global LTE 4G/5G with 2G fallback",
+        "Temperature, humidity, light, shock, location and route"
+      ],
+      highlights: [
+        {
+          title: "Chip-level radio design",
+          body: "Chip-level design replaces off-the-shelf modules to deliver a stronger signal, a 156% larger effective working range and reliable data transmission."
+        },
+        {
+          title: "2× battery endurance",
+          body: "A low-power algorithm gives 4G devices endurance comparable to 2G models, with about twice the battery life of comparable loggers."
+        },
+        {
+          title: "T71 probe variant",
+          body: "The external-probe version monitors temperature from −40 °C to 80 °C, along with shock and location. It suits deep-frozen and ultra-low-temperature shipments."
+        },
+        {
+          title: "2-year warranty",
+          body: "Reusable hardware comes with a two-year warranty and can be used across dozens of trips."
+        }
+      ],
+      specs: [
+        { label: "Models", value: "T7 (internal sensors) · T71 (4G, external probe)" },
+        { label: "Usage type", value: "Multi-use (reusable) + rechargeable" },
+        { label: "Monitored parameters", value: "Temperature, humidity, light, shock, location, routes · T71: probe temperature, shock, location" },
+        { label: "Temperature sensor", value: "Texas Instruments digital sensor" },
+        { label: "Temperature range", value: "−30 °C to 70 °C · T71 probe: −40 °C to 80 °C" },
+        { label: "Accuracy / resolution", value: "±0.5 °C (−20 °C to +40 °C) · 0.1 °C / 1 % RH" },
+        { label: "Humidity range", value: "5–95 % RH, ±3 % (20–80 % RH)" },
+        { label: "Memory capacity", value: "Up to 50,000 readings" },
+        { label: "Location", value: "LBS base-station positioning" },
+        { label: "Cellular", value: "Global LTE 4G/5G with 2G fallback · embedded global roaming SIM" },
+        { label: "Use time", value: "120 days per charge at 120-min reporting interval" },
+        { label: "Intervals", value: "1–10 min logging · 10–120 min reporting (platform settable)" },
+        { label: "Reports", value: "PDF via USB 2.0, cloud platform or mobile app" },
+        { label: "Environmental rating", value: "IP64" },
+        { label: "Dimensions / weight", value: "103 × 65.6 × 18.5 mm · 160 g (T7) / 250 g (T71)" },
+        { label: "Certifications", value: "FCC, CE, RTCA/DO-160G, UN38.3, RoHS, WEEE" },
+        { label: "Shelf time / storage", value: "12 months · −10 °C to +55 °C" }
+      ],
+      image: "/products/cold-chain-logger-device.jpg",
+      imageAlt: "Multi-use rechargeable real-time logger with on-device display"
+    }
+  ]
+};
+
+/**
+ * Technical spec sheets per solution, keyed by pillar slug.
+ * Cold-chain specs taken from the TemperatureHumidity logger datasheet.
+ */
+export const specSheets: Record<string, { label: string; value: string }[]> = {
+  "cold-chain": [
+    { label: "Usage type", value: "Multi-use (reusable + rechargeable) or single-use" },
+    { label: "Monitored parameters", value: "Temperature, humidity, shock, location, track routes" },
+    { label: "Temperature sensor", value: "Internal Texas Instruments (TI) digital sensor, NIST traceable" },
+    { label: "Temperature range", value: "−30 °C to 70 °C (−22 °F to 158 °F)" },
+    { label: "Temperature accuracy", value: "±0.5 °C (−20 °C to +40 °C); ±1 °C elsewhere" },
+    { label: "Humidity range", value: "5–95 % RH, ±3 % (20–80 % RH)" },
+    { label: "Memory capacity", value: "Up to 50,000 readings" },
+    { label: "Connectivity", value: "Global LTE 4G/5G with 2G fallback and embedded roaming SIM" },
+    { label: "Use time", value: "120 days per charge at 120-min reporting interval" },
+    { label: "Logging / reporting interval", value: "1–10 min logging; 10–120 min reporting (platform settable)" },
+    { label: "Reports", value: "PDF via USB 2.0, cloud platform or mobile app" },
+    { label: "Dimensions / weight", value: "103 × 65.6 × 18.5 mm / 160 g" },
+    { label: "Certifications", value: "FCC, CE, RTCA/DO-160G, UN38.3, RoHS, WEEE" },
+    { label: "Environmental rating", value: "IP64 (multi-use) / IP67 (single-use USB)" }
+  ]
+};
 
 export const industries = [
   {
@@ -359,11 +541,11 @@ export const industries = [
   },
   {
     title: "Food & Beverage",
-    body: "From breweries to QSR chains — protect margins with predictive maintenance and cut spoilage with real-time cold-chain alerts."
+    body: "From breweries to QSR chains, protect margins with predictive maintenance and cut spoilage with real-time cold-chain alerts."
   },
   {
     title: "Logistics & Fleet",
-    body: "Reefer operators, tanker fleets and distributors prove chain-of-custody in real time — from Mombasa port to the last mile."
+    body: "Reefer operators, tanker fleets and distributors prove chain-of-custody in real time, from Mombasa port to the last mile."
   },
   {
     title: "Real Estate & Facilities",
@@ -378,11 +560,11 @@ export const industries = [
 export const benefits = [
   {
     title: "Real-time Monitoring",
-    body: "Live data on consumption, fuel, temperature and location — via web dashboards and mobile apps."
+    body: "Live data on consumption, fuel, temperature and location, via web dashboards and mobile apps."
   },
   {
     title: "Predictive Maintenance",
-    body: "Analyse trends to predict failures and maintenance needs — reducing downtime and repair costs."
+    body: "Analyse trends to predict failures and maintenance needs, reducing downtime and repair costs."
   },
   {
     title: "Cost Reduction",
@@ -394,7 +576,7 @@ export const benefits = [
   },
   {
     title: "Remote Access & Control",
-    body: "Access data — and, where enabled, disconnect, reconnect or shut off — from anywhere in the world."
+    body: "Access data, and, where enabled, disconnect, reconnect or shut off, from anywhere in the world."
   },
   {
     title: "ESG-aligned Reporting",
@@ -403,7 +585,7 @@ export const benefits = [
 ];
 
 /**
- * Platform layers — the technical stack behind every solution.
+ * Platform layers, the technical stack behind every solution.
  * Wording aligns with the DIN-rail gateway architecture described in the docs.
  */
 export const platformLayers = [
@@ -424,7 +606,7 @@ export const platformLayers = [
     label: "Connect",
     title: "DIN-rail IoT gateway, any protocol.",
     body:
-      "Our heart-of-system gateway connects RS485 Modbus devices, controllers and sensors — over 4G, Wi-Fi, WLAN or Ethernet — into cloud dashboards and mobile apps.",
+      "Our heart-of-system gateway connects RS485 Modbus devices, controllers and sensors, over 4G, Wi-Fi, WLAN or Ethernet, into cloud dashboards and mobile apps.",
     bullets: [
       "12–30 V power supply range",
       "4G / Wi-Fi / WLAN / Ethernet",
@@ -437,7 +619,7 @@ export const platformLayers = [
     label: "Analyze",
     title: "Real-time dashboards and analytics.",
     body:
-      "Cloud analytics turn raw telemetry into consumption reports, KPI dashboards and predictive insights — from the building level down to individual assets.",
+      "Cloud analytics turn raw telemetry into consumption reports, KPI dashboards and predictive insights, from the building level down to individual assets.",
     bullets: [
       "Real-time power quadrants & load profiles",
       "Automated audits & benchmarks",
@@ -449,7 +631,7 @@ export const platformLayers = [
     label: "Alert",
     title: "Alerts that reach someone who cares.",
     body:
-      "Configurable thresholds trigger multi-channel alerts — SMS, WhatsApp, email and in-app — with escalation ladders for ops managers and on-call teams.",
+      "Configurable thresholds trigger multi-channel alerts, SMS, WhatsApp, email and in-app, with escalation ladders for ops managers and on-call teams.",
     bullets: [
       "SMS · Email · App · WhatsApp",
       "Escalation ladders & on-call rotations",
@@ -461,7 +643,7 @@ export const platformLayers = [
     label: "Act",
     title: "Remote control and predictive action.",
     body:
-      "Beyond monitoring — remote valve, meter and load control, PDF/Excel report exports and integration hooks to your ERP, billing or M-Pesa systems.",
+      "Beyond monitoring, remote valve, meter and load control, PDF/Excel report exports and integration hooks to your ERP, billing or M-Pesa systems.",
     bullets: [
       "Remote valve & load control",
       "PDF, Excel and API exports",
@@ -479,7 +661,7 @@ export const process = [
   {
     step: "02",
     title: "Deploy",
-    body: "Certified in-house crews install meters, sensors and gateways around live operations — no downtime, no drama."
+    body: "Certified in-house crews install meters, sensors and gateways around live operations, no downtime, no drama."
   },
   {
     step: "03",
@@ -516,7 +698,7 @@ export const capabilities = [
 export const highlights = [
   {
     eyebrow: "Energy monitoring",
-    title: "Hierarchical audit — from building to individual asset.",
+    title: "Hierarchical audit, from building to individual asset.",
     body: "Powerise smart meters map consumption across four levels: building, circuit, critical asset and product condition. Every kWh is traceable, every anomaly is investigable.",
     bullets: [
       "Real-time voltage, current and power-factor logging",
@@ -527,7 +709,7 @@ export const highlights = [
   {
     eyebrow: "Generator telemetry",
     title: "Engine health, fuel and run-hours in one screen.",
-    body: "Retrofit any diesel genset with capacitive fuel probes and CAN-bus / analog telemetry. Live RPM, oil pressure, coolant temperature, running hours and fuel level — with theft alerts the moment a drain occurs.",
+    body: "Retrofit any diesel genset with capacitive fuel probes and CAN-bus / analog telemetry. Live RPM, oil pressure, coolant temperature, running hours and fuel level, with theft alerts the moment a drain occurs.",
     bullets: [
       "Predictive maintenance from CAN-bus DTCs",
       "Sudden-drain and unauthorised top-up alerts",

@@ -17,10 +17,10 @@ export default function IndustriesPage() {
       <PageHeader
         eyebrow="Industries"
         title={<>Built for the operators keeping Africa running.</>}
-        description="The Powerise stack is intentionally horizontal. From vaccine cold rooms in Turkana to genset fleets in Lagos and Nairobi malls sub-metering their tenants — the same platform adapts."
+        description="The Powerise stack is intentionally horizontal. The same platform adapts to vaccine cold rooms in Turkana, genset fleets in Lagos and Nairobi malls sub-metering their tenants."
       />
 
-      <section className="py-20 md:py-24">
+      <section className="bg-gradient-to-b from-ink-50 via-ink-100 to-brand-50/40 py-20 md:py-24">
         <div className="container-x grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {industries.map((ind) => (
             <article

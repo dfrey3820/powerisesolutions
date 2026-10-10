@@ -8,21 +8,21 @@ import { Check, MapPin } from "lucide-react";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Powerise Solutions Limited — a cutting-edge IoT solutions provider delivering smart energy, cold-chain and connected-home platforms."
+    "Powerise Solutions Limited is a cutting-edge IoT provider of smart energy, cold-chain and connected-home platforms."
 };
 
 /**
- * "How we deliver" points — drawn from the client's own capability decks.
+ * "How we deliver" points, drawn from the client's own capability decks.
  * These are verifiable statements about the system, not fabricated bios.
  */
 const capabilities = [
   {
     title: "Comprehensive solution stack",
-    body: "One portfolio across energy, water, gas, logistics, cold chain and home automation — a single accountable partner from sensor to dashboard."
+    body: "One portfolio across energy, water, gas, logistics, cold chain and home automation, with one accountable partner from sensor to dashboard."
   },
   {
     title: "Data-driven insights",
-    body: "Continuous telemetry, automated audit reports and actionable analytics — meters and sensors turned into decisions your team can act on."
+    body: "Continuous telemetry, automated audit reports and actionable analytics turn readings from meters and sensors into decisions your team can act on."
   },
   {
     title: "Resilient in the field",
@@ -30,7 +30,7 @@ const capabilities = [
   },
   {
     title: "Open protocols, no lock-in",
-    body: "HTTP, MQTT, Modbus TCP and Modbus RTU on the gateway — integrate with your existing ERP, billing or M-Pesa systems via API."
+    body: "The gateway supports HTTP, MQTT, Modbus TCP and Modbus RTU. Integrate it with your existing ERP, billing or M-Pesa systems via API."
   },
   {
     title: "On-device data safety",
@@ -97,7 +97,7 @@ export default function AboutPage() {
 
       <Stats />
 
-      <section className="py-20 md:py-24">
+      <section className="bg-gradient-to-b from-ink-50 to-ink-200/60 py-20 md:py-24">
         <div className="container-x">
           <div className="max-w-2xl">
             <p className="eyebrow">How we deliver</p>
@@ -106,7 +106,7 @@ export default function AboutPage() {
             </h2>
             <p className="mt-4 text-base leading-relaxed text-fog-300">
               We combine on-site assessment with continuous, real-time
-              monitoring — every recommendation is anchored to measured data,
+              monitoring. Every recommendation is anchored to measured data,
               not opinions.
             </p>
           </div>
@@ -131,7 +131,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-y border-ink-300 bg-ink-100 py-20 md:py-24">
+      <section className="border-y border-ink-300 bg-gradient-to-br from-ink-100 via-brand-50/50 to-ink-100 py-20 md:py-24">
         <div className="container-x">
           <div className="max-w-2xl">
             <p className="eyebrow">Our system & support</p>
@@ -140,7 +140,7 @@ export default function AboutPage() {
             </h2>
             <p className="mt-4 text-base leading-relaxed text-fog-300">
               Every capability below is verifiable in the Powerise product
-              documentation — no marketing claims we can&apos;t back with a spec
+              documentation. We make no marketing claims we can&apos;t back with a spec
               sheet.
             </p>
           </div>

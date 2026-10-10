@@ -3,20 +3,20 @@
  *
  * Priority for imagery:
  *   1. Authentic client-supplied assets in /public/{dashboards,products,diagrams}
- *      — extracted from the Powerise energy, generator, cold-chain, truck
+ *, extracted from the Powerise energy, generator, cold-chain, truck
  *      telemetry and smart-lock documentation.
  *   2. Royalty-free Unsplash photography for atmospheric industry backdrops
  *      where no client asset exists. Unsplash images are licensed for free
  *      commercial and non-commercial use with no attribution required.
  *
- * Third-party / competitor imagery from the client's PDFs is intentionally
- * excluded (e.g. Mauto- or Frigga-branded gateway photos).
+ * Third-party / competitor imagery from the client's PDFs is excluded
+ * (e.g. Mauto-branded gateway photos). Frigga logger imagery is included,  * it is the cold-chain product line Powerise supplies.
  */
 
 const u = (id: string, w = 1600) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
-/** Atmospheric hero backdrop — royalty-free. */
+/** Atmospheric hero backdrop, royalty-free. */
 export const heroBg = u("1519389950473-47ba0277781c", 2200);
 
 /**
@@ -27,13 +27,13 @@ export const heroBg = u("1519389950473-47ba0277781c", 2200);
 export const pillarImages: Record<string, string> = {
   "energy-monitoring":    "/products/energy-meters-install.jpg",
   "generator-monitoring": "/dashboards/genset-web.jpg",
-  "cold-chain":           u("1553413077-190dd305871c", 1400),
+  "cold-chain":           "/products/cold-chain-loggers.jpg",
   "truck-telematics":     "/dashboards/truck-telematics.jpg",
   "water-gas-metering":   u("1509391366360-2e959784a276", 1400),
   "smart-home":           "/products/smart-lock.jpg"
 };
 
-/** Industry backdrops — royalty-free Unsplash photography. */
+/** Industry backdrops, royalty-free Unsplash photography. */
 export const industryImages: Record<string, string> = {
   "Utilities & Energy":       u("1547471080-7cc2caa01a7e", 1200),
   "Health & Life Sciences":   u("1519055548599-6d4d129508c4", 1200),

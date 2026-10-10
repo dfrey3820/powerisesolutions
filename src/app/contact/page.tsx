@@ -7,7 +7,7 @@ import { Clock, Mail, MapPin } from "lucide-react";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Talk to Powerise Solutions — visit us in Nairobi, email or book a walkthrough."
+    "Talk to Powerise Solutions, visit us in Nairobi, email or book a walkthrough."
 };
 
 const details = [
@@ -35,10 +35,10 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Get in touch"
         title={<>Let&apos;s design your first deployment.</>}
-        description="Tell us about your site, fleet or facility — a Powerise engineer will reply within one business day with a costed next step."
+        description="Tell us about your site, fleet or facility. A Powerise engineer will reply within one business day with a costed next step."
       />
 
-      <section className="py-16 md:py-20">
+      <section className="bg-gradient-to-b from-ink-50 to-brand-50/40 py-16 md:py-20">
         <div className="container-x grid gap-10 lg:grid-cols-[1fr_1.1fr]">
           <div className="space-y-4">
             {details.map((d) => (

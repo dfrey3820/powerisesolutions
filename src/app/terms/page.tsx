@@ -60,7 +60,7 @@ export default function TermsPage() {
             </div>
             <p className="text-sm text-fog-300">
               Last updated: {new Date().toLocaleDateString("en-GB")}. This is a
-              placeholder — replace with your legally-reviewed version before
+              placeholder, replace with your legally-reviewed version before
               launch.
             </p>
           </div>

@@ -14,6 +14,8 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const [desktopSubmenu, setDesktopSubmenu] = useState<string | null>(null);
+  const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -50,7 +52,10 @@ export function Navbar() {
                     key={item.href}
                     className="relative"
                     onMouseEnter={() => setSolutionsOpen(true)}
-                    onMouseLeave={() => setSolutionsOpen(false)}
+                    onMouseLeave={() => {
+                      setSolutionsOpen(false);
+                      setDesktopSubmenu(null);
+                    }}
                   >
                     <Link
                       href={item.href}
@@ -78,22 +83,59 @@ export function Navbar() {
                           transition={{ duration: 0.15 }}
                           className="absolute left-1/2 top-full -translate-x-1/2 pt-3"
                         >
-                          <div className="w-[380px] rounded-2xl border border-ink-300 bg-ink-50 p-2 shadow-xl shadow-ink-900/5">
+                          <div className="w-[320px] rounded-xl border border-ink-300 bg-ink-50 p-1.5 shadow-xl shadow-ink-900/5">
                             {item.children.map((c) => (
-                              <Link
+                              <div
                                 key={c.href}
-                                href={c.href}
-                                className="group flex flex-col rounded-xl px-3 py-2.5 transition-colors hover:bg-ink-100"
+                                className="relative border-b border-ink-300/70 last:border-b-0"
+                                onMouseEnter={() =>
+                                  c.children && setDesktopSubmenu(c.href)
+                                }
+                                onMouseLeave={() => setDesktopSubmenu(null)}
                               >
-                                <span className="text-sm font-medium text-fog-100 group-hover:text-brand-600">
-                                  {c.label}
-                                </span>
-                                {c.description && (
-                                  <span className="text-xs text-fog-300">
-                                    {c.description}
-                                  </span>
+                                <div className="flex items-center rounded-xl transition-colors hover:bg-ink-100">
+                                  <Link
+                                    href={c.href}
+                                    className="group flex min-w-0 flex-1 flex-col px-2.5 py-2"
+                                  >
+                                    <span className="text-sm font-medium text-fog-100 group-hover:text-brand-600">
+                                      {c.label}
+                                    </span>
+                                  </Link>
+                                  {c.children && (
+                                    <span
+                                      aria-hidden
+                                      className="mr-2 grid h-8 w-8 flex-none place-items-center text-fog-300"
+                                    >
+                                      <ChevronDown
+                                        className={cn(
+                                          "h-4 w-4 -rotate-90 transition-opacity",
+                                          desktopSubmenu !== c.href && "opacity-60"
+                                        )}
+                                      />
+                                    </span>
+                                  )}
+                                </div>
+                                {c.children && (
+                                  <div
+                                    className={cn(
+                                      "absolute left-full top-0 z-10 ml-2 w-56 rounded-lg border border-ink-300 bg-ink-50 p-1.5 shadow-xl shadow-ink-900/5",
+                                      "before:absolute before:-left-2 before:top-0 before:h-full before:w-2",
+                                      desktopSubmenu === c.href ? "block" : "hidden"
+                                    )}
+                                  >
+                                    {c.children.map((s) => (
+                                      <Link
+                                        key={s.href}
+                                        href={s.href}
+                                        className="block rounded-lg px-3 py-2 text-xs text-fog-300 transition-colors hover:bg-ink-100 hover:text-brand-600"
+                                      >
+                                        {s.label}
+                                      </Link>
+                                    ))}
+                                  </div>
                                 )}
-                              </Link>
+                              </div>
                             ))}
                           </div>
                         </motion.div>
@@ -169,12 +211,57 @@ export function Navbar() {
                       <ul className="ml-3 border-l border-ink-300 pl-3">
                         {item.children.map((c) => (
                           <li key={c.href}>
-                            <Link
-                              href={c.href}
-                              className="block rounded-lg px-3 py-2 text-xs text-fog-300 hover:text-fog-100"
-                            >
-                              {c.label}
-                            </Link>
+                            <div className="flex items-center">
+                              <Link
+                                href={c.href}
+                                className="flex-1 rounded-lg px-3 py-2 text-xs text-fog-300 hover:text-fog-100"
+                              >
+                                {c.label}
+                              </Link>
+                              {c.children && (
+                                <button
+                                  type="button"
+                                  aria-label={`Show ${c.label} models`}
+                                  aria-expanded={mobileSubmenu === c.href}
+                                  onClick={() =>
+                                    setMobileSubmenu((current) =>
+                                      current === c.href ? null : c.href
+                                    )
+                                  }
+                                  className="grid h-8 w-8 place-items-center rounded-md text-fog-300 hover:bg-ink-100 hover:text-fog-100"
+                                >
+                                  <ChevronDown
+                                    className={cn(
+                                      "h-4 w-4 transition-transform",
+                                      mobileSubmenu === c.href && "rotate-180"
+                                    )}
+                                  />
+                                </button>
+                              )}
+                            </div>
+                            {c.children && (
+                              <AnimatePresence initial={false}>
+                                {mobileSubmenu === c.href && (
+                                  <motion.ul
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: "auto", opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    className="ml-3 overflow-hidden border-l border-ink-300 pl-3"
+                                  >
+                                    {c.children.map((s) => (
+                                      <li key={s.href}>
+                                        <Link
+                                          href={s.href}
+                                          className="block rounded-lg px-3 py-2 text-xs text-fog-400 hover:text-fog-100"
+                                        >
+                                          {s.label}
+                                        </Link>
+                                      </li>
+                                    ))}
+                                  </motion.ul>
+                                )}
+                              </AnimatePresence>
+                            )}
                           </li>
                         ))}
                       </ul>

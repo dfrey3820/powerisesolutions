@@ -18,10 +18,10 @@ const iconMap = {
 
 const shotCaptions: Record<string, string> = {
   sense:   "DIN-rail smart meters installed in a real Powerise deployment.",
-  connect: "Gateway feature map — RS485, CAN-bus, 4G, Wi-Fi and Ethernet.",
+  connect: "Gateway feature map: RS485, CAN-bus, 4G, Wi-Fi and Ethernet.",
   analyze: "Live generator dashboard: RPM, fuel rate, run-hours and load.",
-  alert:   "Mobile control app — engine, pressure, temperature and fuel.",
-  act:     "Truck & fleet telematics — fuel, route and driver behaviour."
+  alert:   "Mobile control app: engine, pressure, temperature and fuel.",
+  act:     "Truck & fleet telematics: fuel, route and driver behaviour."
 };
 
 export function Platform() {
@@ -41,7 +41,7 @@ export function Platform() {
               <span className="text-brand-600">Five clear layers.</span>
             </>
           }
-          description="From ruggedised field sensors to the DIN-rail IoT gateway, cloud analytics and remote-control actions — Powerise Cloud runs the whole pipeline."
+          description="Powerise Cloud runs the whole pipeline, from ruggedised field sensors to the DIN-rail IoT gateway, cloud analytics and remote-control actions."
         />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[300px_1fr]">

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 /**
- * Powerise brandmark — SVG recreation of the original logo.
+ * Powerise brandmark, SVG recreation of the original logo.
  *
  * Palette (sampled from the original PNG):
  *   green  #005a28  ·  #00a03d
@@ -127,7 +127,7 @@ export function Logo({
         "group inline-flex items-center transition-opacity hover:opacity-90",
         className
       )}
-      aria-label="Powerise Solutions — home"
+      aria-label="Powerise Solutions, home"
     >
       {content}
     </Link>

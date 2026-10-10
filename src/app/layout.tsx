@@ -27,7 +27,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://powerise.co.ke"),
   title: {
-    default: "Powerise Solutions — Intelligent IoT for a Connected Africa",
+    default: "Powerise Solutions: Intelligent IoT for a Connected Africa",
     template: "%s · Powerise Solutions"
   },
   description:
@@ -48,15 +48,15 @@ export const metadata: Metadata = {
     locale: "en_KE",
     url: "https://powerise.co.ke",
     siteName: "Powerise Solutions",
-    title: "Powerise Solutions — Intelligent IoT for a Connected Africa",
+    title: "Powerise Solutions: Intelligent IoT for a Connected Africa",
     description:
-      "Energy, generator, water, gas, cold-chain and smart-home IoT — engineered for African conditions."
+      "Energy, generator, water, gas, cold-chain and smart-home IoT, engineered for African conditions."
   },
   twitter: {
     card: "summary_large_image",
-    title: "Powerise Solutions — Intelligent IoT",
+    title: "Powerise Solutions: Intelligent IoT",
     description:
-      "Energy, generator, water, gas, cold-chain and smart-home IoT — engineered for African conditions."
+      "Energy, generator, water, gas, cold-chain and smart-home IoT, engineered for African conditions."
   }
 };
 

@@ -7,6 +7,11 @@ const nextConfig = {
         source: "/services/generator-monitoring",
         destination: "/services/truck-telematics",
         permanent: true
+      },
+      {
+        source: "/services/water-gas-metering",
+        destination: "/services/utility-monitoring",
+        permanent: true
       }
     ];
   },

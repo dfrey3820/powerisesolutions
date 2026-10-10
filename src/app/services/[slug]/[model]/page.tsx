@@ -38,7 +38,7 @@ export default async function ProductModelPage({ params }: Params) {
           <div>
             <p className="eyebrow">Why this model</p>
             <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight text-fog-100 md:text-3xl">
-              {pillar.title} monitoring, sized to the trip.
+              {pillar.title} monitoring, sized to your operation.
             </h2>
             <ul className="mt-8 grid gap-3">
               {m.points.map((p) => (

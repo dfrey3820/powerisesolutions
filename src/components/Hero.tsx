@@ -30,7 +30,7 @@ const slides: Slide[] = [
     title: "Catch losses before they add up.",
     description:
       "Track usage and spot leaks, tampering and unusual readings sooner.",
-    href: "/services/water-gas-metering",
+    href: "/services/utility-monitoring",
     imageAlt: "Installed smart electricity meters and wiring"
   },
   {
@@ -126,7 +126,7 @@ export function Hero() {
             <div className="mt-7">
               <Link
                 href={active.href}
-                className="inline-flex min-h-12 items-center gap-3 bg-brand-500 px-5 text-sm font-semibold text-white transition-colors hover:bg-brand-600"
+                className="inline-flex min-h-12 items-center gap-3 rounded-full bg-brand-red px-6 text-sm font-semibold text-white transition-colors hover:bg-brand-red/85"
               >
                 Explore solution
                 <ArrowRight className="h-4 w-4" />

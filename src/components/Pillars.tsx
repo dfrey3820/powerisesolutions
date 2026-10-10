@@ -25,64 +25,34 @@ const imageAlts: Record<string, string> = {
   "energy-monitoring": "Smart energy meters installed in a distribution board",
   "cold-chain": "Frigga cold-chain temperature data loggers",
   "truck-telematics": "Truck telematics dashboard with live fleet view",
-  "water-gas-metering": "Smart utility metering in the field",
+  "utility-monitoring": "Utility monitoring dashboard with live genset and energy telemetry",
   "smart-home": "Smart lock with fingerprint and PIN access"
 };
 
 export function Pillars() {
   return (
-    <section id="divisions" className="relative py-16 md:py-24">
-      <div className="container-x">
-        {/* Section header */}
-        <div className="grid gap-8 md:grid-cols-12 md:items-end">
-          <div className="md:col-span-7">
-            <p className="eyebrow">Our divisions</p>
-            <h2 className="mt-4 font-display text-3xl font-semibold leading-tight text-fog-100 sm:text-4xl md:text-[2.75rem]">
-              Five divisions.
-              <br />
-              <span className="text-brand-600">One connected platform.</span>
-            </h2>
-          </div>
-          <div className="md:col-span-5">
-            <p className="max-w-md text-sm leading-6 text-fog-300 md:text-base md:leading-7">
-              Each division runs as a dedicated practice — its own hardware,
-              its own specialists — reporting into one dashboard. Start where
-              it hurts most, scale when you&apos;re ready.
-            </p>
-          </div>
-        </div>
+    <section id="divisions" className="relative">
+      {/* Section header */}
+      <div className="bg-brand-50/60 pt-16 text-center md:pt-24">
+        <h2 className="font-display text-3xl font-semibold leading-tight text-fog-100 sm:text-4xl md:text-[2.75rem]">
+          Our <span className="text-brand-600">Solutions</span>
+        </h2>
+      </div>
 
-        {/* Index rail */}
-        <nav
-          aria-label="Divisions index"
-          className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-y border-ink-300 py-4"
-        >
-          {pillars.map((p) => (
-            <a
-              key={p.slug}
-              href={`#${p.slug}`}
-              className="group inline-flex items-baseline gap-2 text-sm font-medium text-fog-300 transition-colors hover:text-fog-100"
-            >
-              <span className="underline-offset-4 group-hover:underline">
-                {p.title}
-              </span>
-            </a>
-          ))}
-        </nav>
+      {/* Division chapters, alternating full-width bands */}
+      {pillars.map((p, i) => {
+        const Icon = icons[p.icon as keyof typeof icons] ?? Gauge;
+        const imageLeft = i % 2 === 1;
 
-        {/* Division chapters */}
-        <div>
-          {pillars.map((p, i) => {
-            const Icon = icons[p.icon as keyof typeof icons] ?? Gauge;
-            const imageLeft = i % 2 === 1;
-
-            return (
+        return (
+          <div
+            key={p.slug}
+            className={i % 2 === 0 ? "bg-brand-50/60" : "bg-ink-50"}
+          >
+            <div className="container-x">
               <article
-                key={p.slug}
                 id={p.slug}
-                className={`grid scroll-mt-28 gap-10 py-14 md:grid-cols-12 md:gap-x-12 md:py-20 ${
-                  i > 0 ? "border-t border-ink-300" : ""
-                }`}
+                className="grid scroll-mt-28 gap-10 py-14 md:grid-cols-12 md:gap-x-12 md:py-20"
               >
                 {/* Copy */}
                 <div
@@ -98,7 +68,7 @@ export function Pillars() {
                     </span>
                   </div>
 
-                  <h3 className="mt-5 font-display text-2xl font-semibold leading-snug text-fog-100 sm:text-3xl md:text-[2.125rem] md:leading-[1.2]">
+                  <h3 className="mt-5 font-display text-2xl font-semibold leading-snug text-brand-red sm:text-3xl md:text-[2.125rem] md:leading-[1.2]">
                     {p.tagline}
                   </h3>
 
@@ -124,7 +94,7 @@ export function Pillars() {
                   <div className="mt-8">
                     <Link
                       href={`/services/${p.slug}`}
-                      className="group inline-flex items-center gap-2.5 border border-ink-900 px-5 py-3 text-sm font-semibold text-fog-100 transition-colors hover:border-brand-600 hover:bg-brand-600 hover:text-white"
+                      className="group inline-flex items-center gap-2.5 rounded-full border border-brand-red px-6 py-3 text-sm font-semibold text-brand-red transition-colors hover:bg-brand-red hover:text-white"
                     >
                       Explore {p.title}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -149,10 +119,10 @@ export function Pillars() {
                   </div>
                 </div>
               </article>
-            );
-          })}
-        </div>
-      </div>
+            </div>
+          </div>
+        );
+      })}
     </section>
   );
 }

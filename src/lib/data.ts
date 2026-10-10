@@ -5,6 +5,8 @@ export type NavItem = {
     label: string;
     href: string;
     description?: string;
+    /** Hover-only parent: shows its children but is not itself a link. */
+    linkless?: boolean;
     children?: { label: string; href: string }[];
   }[];
 };
@@ -42,8 +44,27 @@ export const navigation: NavItem[] = [
       },
       {
         label: "Utility Monitoring",
-        href: "/services/water-gas-metering",
-        description: "Generator, electricity, solar, backup batteries, water & gas"
+        href: "/services/utility-monitoring",
+        description: "Generator, electricity, solar, backup batteries, water & gas",
+        linkless: true,
+        children: [
+          {
+            label: "Generator & Fuel Monitoring",
+            href: "/services/utility-monitoring/generator-monitoring"
+          },
+          {
+            label: "Smart Electricity Metering",
+            href: "/services/utility-monitoring/electricity-monitoring"
+          },
+          {
+            label: "Solar & Backup Battery Monitoring",
+            href: "/services/utility-monitoring/solar-battery-monitoring"
+          },
+          {
+            label: "Water & Gas Metering",
+            href: "/services/utility-monitoring/water-gas-metering"
+          }
+        ]
       },
       {
         label: "Smart Homes",
@@ -157,17 +178,17 @@ export const pillars = [
     ]
   },
   {
-    slug: "water-gas-metering",
+    slug: "utility-monitoring",
     icon: "droplet",
-    title: "Water & Gas Metering",
-    tagline: "Bill accurately. Find leaks first.",
+    title: "Utility Monitoring",
+    tagline: "Every utility, measured in real time.",
     description:
-      "Smart water and gas meters over LoRaWAN and 4G provide accurate consumption data, leak and tamper detection, remote valve control and audit-ready reporting.",
+      "One IoT platform to monitor every utility you depend on: generators, grid electricity, solar and backup batteries, water and gas. Real-time dashboards, leak and theft detection, and audit-ready reporting across your sites.",
     features: [
-      "Ultrasonic flow with tamper alerts",
-      "Non-revenue water reduction",
-      "LEL gas-safety monitoring & auto shut-off",
-      "Prepaid, postpaid and TOU billing"
+      "Generator health, fuel & run-hours over 250+ parameters",
+      "Smart electricity metering with TOU billing",
+      "Solar production & backup battery health",
+      "Ultrasonic water & gas metering with leak alerts"
     ]
   },
   {
@@ -292,7 +313,25 @@ export const services = {
       icon: "bell"
     }
   ],
-  "water-gas-metering": [
+  "utility-monitoring": [
+    {
+      title: "Generator & Fuel Monitoring",
+      description:
+        "Online control of genset operation across 250+ parameters: engine health, fuel level, run-hours and power output, with fuel-theft alerts and remote management.",
+      icon: "zap"
+    },
+    {
+      title: "Smart Electricity Metering",
+      description:
+        "IoT energy meters stream voltage, current, power factor and consumption to the cloud for continuous energy audits, TOU billing and tamper detection.",
+      icon: "gauge"
+    },
+    {
+      title: "Solar & Backup Battery Monitoring",
+      description:
+        "Track solar production, consumption and battery health across hybrid systems; balance loads across grid, solar, genset and battery sources.",
+      icon: "sun"
+    },
     {
       title: "Smart Water Metering",
       description:
@@ -503,6 +542,155 @@ export const productModels: Record<
       ],
       image: "/products/cold-chain-logger-device.jpg",
       imageAlt: "Multi-use rechargeable real-time logger with on-device display"
+    }
+  ],
+  "utility-monitoring": [
+    {
+      slug: "generator-monitoring",
+      name: "Generator & Fuel Monitoring",
+      tagline: "Gensets · 250+ parameters",
+      description:
+        "Online control of generator operation: remote diagnostics of engine and generator health, comprehensive fuel-consumption monitoring with theft prevention, and remote genset management that cuts fuel and maintenance expenses.",
+      points: [
+        "Monitors 250+ generator parameters in real time",
+        "Fuel-level sensing flags fills, sudden drains and siphoning",
+        "Remote diagnostics of engine and generator health",
+        "Remote management and maintenance scheduling"
+      ],
+      highlights: [
+        {
+          title: "Fuel theft prevention",
+          body: "IoT fuel sensors give real-time notification of usage, top-ups and sudden drains, so unauthorised draining is caught the moment it happens."
+        },
+        {
+          title: "Predictive maintenance",
+          body: "Data trends across engine speed, oil pressure, coolant temperature and run-hours predict failures before they cause downtime."
+        },
+        {
+          title: "Enterprise view",
+          body: "Scale from a single genset to a nationwide fleet, with dashboards accessible from phone, tablet or computer anywhere."
+        }
+      ],
+      specs: [
+        { label: "Monitored parameters", value: "250+ incl. engine speed, oil pressure, coolant temperature, voltage, frequency, power output, run-hours" },
+        { label: "Fuel sensing", value: "Capacitive fuel-level probes and diesel flow meters (common-rail / pump-injector compatible)" },
+        { label: "Alerts", value: "SMS, email and app notifications for alarms, fuel loss and abnormal events" },
+        { label: "Reports", value: "Automated PDF and Excel reports, fuel and power-produced analytics" },
+        { label: "Remote management", value: "Remote genset diagnostics and management from web and mobile" },
+        { label: "Scale", value: "Up to 140 devices per system connection; platform monitors 10,000+ parameters" }
+      ],
+      image: "/dashboards/genset-web.jpg",
+      imageAlt: "Generator monitoring web dashboard with fuel and engine telemetry"
+    },
+    {
+      slug: "electricity-monitoring",
+      name: "Smart Electricity Metering",
+      tagline: "Energy audit · smart meters",
+      description:
+        "IoT smart energy meters stream voltage, current, power factor and consumption to a cloud analytics platform — turning the traditional energy audit into continuous, data-driven insight with automated billing.",
+      points: [
+        "Live consumption dashboards on web and mobile",
+        "Automated, time-stamped billing with TOU support",
+        "Anomaly and tamper detection, no manual reads",
+        "Fault detection: voltage fluctuations, phase imbalance, outages"
+      ],
+      highlights: [
+        {
+          title: "Real-time monitoring",
+          body: "Live data on electricity consumption reveals peak usage times and wasteful equipment as it happens, not at month-end."
+        },
+        {
+          title: "Automated billing",
+          body: "Accurate, time-stamped usage logs support time-of-use tariffs and dynamic pricing, eliminating estimation-based bills."
+        },
+        {
+          title: "Predictive insights",
+          body: "Trend analytics predict energy demand, optimise appliance usage and detect inefficient or failing equipment early."
+        }
+      ],
+      specs: [
+        { label: "Measured parameters", value: "Voltage, current, power factor, active & reactive power, energy consumption, load patterns" },
+        { label: "Meter reading", value: "Fully remote — no manual reads; remote disconnection/reconnection supported" },
+        { label: "Billing", value: "Automated time-stamped logs; TOU tariffs and dynamic pricing" },
+        { label: "Fault detection", value: "Voltage fluctuations, phase imbalance, power outages, equipment failure" },
+        { label: "Alerts", value: "Configurable consumption targets and anomaly alerts via SMS, email and app" },
+        { label: "Platform", value: "Cloud dashboards, automated audit reports and benchmarks" }
+      ],
+      image: "/products/energy-meters-install.jpg",
+      imageAlt: "IoT smart energy meters installed in a distribution board"
+    },
+    {
+      slug: "solar-battery-monitoring",
+      name: "Solar & Backup Battery Monitoring",
+      tagline: "Hybrid power · battery health",
+      description:
+        "Track solar production, consumption and battery health across hybrid installations. Balance loads intelligently across grid, solar, generator and battery sources, and support renewable integration with full visibility.",
+      points: [
+        "Solar production vs consumption in one view",
+        "Battery state-of-charge and health monitoring",
+        "Intelligent load balancing across power sources",
+        "One dashboard for grid, solar, genset and battery"
+      ],
+      highlights: [
+        {
+          title: "Hybrid visibility",
+          body: "See grid, solar, generator and battery contribution side by side, so you know exactly where every kWh comes from."
+        },
+        {
+          title: "Battery health",
+          body: "Charge/discharge cycles and state-of-charge trends protect your backup investment and flag degrading cells early."
+        },
+        {
+          title: "Sustainability reporting",
+          body: "Continuous monitoring quantifies emissions savings and supports ESG and regulatory compliance goals."
+        }
+      ],
+      specs: [
+        { label: "Monitored parameters", value: "PV production, consumption, battery voltage, state of charge, charge/discharge cycles" },
+        { label: "Power sources", value: "Grid, solar, generator and backup batteries on one platform" },
+        { label: "Load management", value: "Intelligent load balancing and renewable integration support" },
+        { label: "Alerts", value: "SMS, email and app alerts on production drops and battery anomalies" },
+        { label: "Platform", value: "Web dashboards and mobile app with automated reports" }
+      ],
+      image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1400&q=80",
+      imageAlt: "Solar panel installation feeding a monitored hybrid power system"
+    },
+    {
+      slug: "water-gas-metering",
+      name: "Water & Gas Metering",
+      tagline: "Ultrasonic · LoRaWAN & 4G",
+      description:
+        "Smart water and gas meters over LoRaWAN and 4G provide accurate consumption data, leak and tamper detection, remote valve control and audit-ready reporting for utilities, estates and industry.",
+      points: [
+        "Ultrasonic flow measurement with burst and leak detection",
+        "Tamper alerts and remote valve shut-off",
+        "Non-revenue water reduction programmes",
+        "Prepaid, postpaid and TOU billing"
+      ],
+      highlights: [
+        {
+          title: "Find leaks first",
+          body: "Flow, temperature and burst detection spot leaks and failing pipes before they become losses, cutting non-revenue water."
+        },
+        {
+          title: "Remote valve control",
+          body: "Shut off supply remotely on tamper, leak or non-payment — including LEL gas-safety monitoring with automatic shut-off."
+        },
+        {
+          title: "Billing-ready data",
+          body: "Accurate consumption data feeds prepaid, postpaid and TOU billing with self-service portals for tenants and customers."
+        }
+      ],
+      specs: [
+        { label: "Meter types", value: "Ultrasonic water meters; ultrasonic & diaphragm gas meters; fluid-level probes; steam meters" },
+        { label: "Connectivity", value: "LoRaWAN and 4G" },
+        { label: "Detection", value: "Leak, burst, tamper and reverse-flow alerts" },
+        { label: "Control", value: "Remote valve shut-off; LEL gas-safety monitoring with auto shut-off" },
+        { label: "Billing", value: "Prepaid, postpaid and time-of-use billing" },
+        { label: "Applications", value: "Utilities, estates, malls, factories; waste fill-level sensing" }
+      ],
+      image: "/products/energy-meters-install.jpg",
+      imageAlt: "Smart utility meters installed for remote water and gas monitoring"
     }
   ]
 };

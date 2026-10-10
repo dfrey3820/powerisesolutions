@@ -29,7 +29,7 @@ export const pillarImages: Record<string, string> = {
   "generator-monitoring": "/dashboards/genset-web.jpg",
   "cold-chain":           "/products/cold-chain-loggers.jpg",
   "truck-telematics":     "/dashboards/truck-telematics.jpg",
-  "water-gas-metering":   u("1509391366360-2e959784a276", 1400),
+  "utility-monitoring":   "/dashboards/genset-web.jpg",
   "smart-home":           "/products/smart-lock.jpg"
 };
 

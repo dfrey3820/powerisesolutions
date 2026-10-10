@@ -37,7 +37,7 @@ export default function ServicesPage() {
                 </p>
                 <Link
                   href={`/services/${p.slug}`}
-                  className="mt-6 inline-flex items-center gap-2 rounded-md bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700"
+                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700"
                 >
                   Deep dive
                   <ArrowUpRight className="h-4 w-4" />

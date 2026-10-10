@@ -33,7 +33,7 @@ export function Button({
   type?: "button" | "submit" | "reset";
 }) {
   const cls = cn(
-    "inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-50",
+    "inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-50",
     styles[variant],
     className
   );

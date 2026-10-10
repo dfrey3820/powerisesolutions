@@ -120,7 +120,7 @@ export default async function ServiceDetailPage({ params }: Params) {
                     </ul>
                     <Link
                       href={`/services/${slug}/${m.slug}`}
-                      className="mt-7 inline-flex items-center gap-2 rounded-md bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
+                      className="mt-7 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
                     >
                       Full datasheet
                       <ArrowRight className="h-4 w-4" />

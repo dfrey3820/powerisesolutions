@@ -19,7 +19,7 @@ export function CTA() {
           </p>
           <Link
             href="/contact"
-            className="mt-7 inline-flex min-h-12 items-center gap-3 bg-brand-500 px-5 text-sm font-semibold text-white transition-colors hover:bg-brand-600"
+            className="mt-7 inline-flex min-h-12 items-center gap-3 rounded-full bg-brand-500 px-6 text-sm font-semibold text-white transition-colors hover:bg-brand-600"
           >
             Book a 30-minute walkthrough
             <ArrowRight className="h-4 w-4" />

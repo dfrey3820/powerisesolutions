@@ -26,9 +26,8 @@ function Welcome() {
     <section className="border-b border-ink-300 bg-gradient-to-r from-ink-100 via-ink-50 to-brand-50/60 py-6 md:py-16">
       <div className="container-x">
         <div className="mx-auto max-w-5xl text-center">
-          <p className="eyebrow">Welcome</p>
-          <h2 className="mt-3 font-display text-2xl font-semibold text-fog-100 sm:text-3xl">
-            Powerise Solutions Limited
+          <h2 className="font-display text-2xl font-semibold text-fog-100 sm:text-3xl">
+            Welcome to Powerise Solutions Limited
           </h2>
           <p className="mx-auto mt-3 max-w-5xl text-[15px] leading-6 text-fog-300 md:mt-4 md:text-lg md:leading-relaxed">
             Powerise Solutions Limited is an IoT provider specializing in smart technologies that improve the efficiency, reliability and sustainability of essential resources and infrastructure. Its portfolio spans energy management, power backup, smart home automation and supply-chain monitoring.

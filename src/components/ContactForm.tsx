@@ -59,7 +59,7 @@ export function ContactForm() {
           <option value="generator-monitoring">Generator Monitoring</option>
           <option value="cold-chain">Cold Chain</option>
           <option value="truck-telematics">Truck &amp; Fleet Telematics</option>
-          <option value="water-gas-metering">Water &amp; Gas Metering</option>
+          <option value="utility-monitoring">Utility Monitoring</option>
           <option value="smart-home">Smart Home &amp; Locks</option>
           <option value="other">Something else</option>
         </select>
